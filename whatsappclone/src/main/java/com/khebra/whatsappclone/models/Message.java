@@ -3,6 +3,7 @@ package com.khebra.whatsappclone.models;
 import com.khebra.whatsappclone.common.BaseAuditingEntity;
 import com.khebra.whatsappclone.common.MessageState;
 import com.khebra.whatsappclone.common.MessageType;
+import com.khebra.whatsappclone.constants.MessageConstants;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,6 +16,11 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name="messages")
+@NamedQuery(name = MessageConstants.FIND_MESSAGES_BY_CHAT_ID,
+query = "SELECT m FROM Message m WHERE m.chat.id= :chatId ORDER BY m.createdDate")
+@NamedQuery(name = MessageConstants.SET_MESSAGES_TO_SEEN_BY_CHAT,
+query = "UPDATE Message SET state= :newState WHERE chat.id= :chatId")
+
 public class Message extends BaseAuditingEntity{
     @Id
     @SequenceGenerator(name = "msg_seq",sequenceName = "msg_seq",allocationSize = 1)
