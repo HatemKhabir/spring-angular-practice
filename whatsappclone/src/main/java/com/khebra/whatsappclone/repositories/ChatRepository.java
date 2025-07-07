@@ -1,7 +1,6 @@
 package com.khebra.whatsappclone.repositories;
 
 import com.khebra.whatsappclone.constants.ChatConstants;
-import com.khebra.whatsappclone.mappers.ChatResponse;
 import com.khebra.whatsappclone.models.Chat;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

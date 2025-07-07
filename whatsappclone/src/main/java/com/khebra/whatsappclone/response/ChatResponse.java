@@ -1,4 +1,4 @@
-package com.khebra.whatsappclone.mappers;
+package com.khebra.whatsappclone.response;
 
 
 import lombok.*;

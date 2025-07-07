@@ -2,14 +2,13 @@ package com.khebra.whatsappclone.services;
 
 
 import com.khebra.whatsappclone.mappers.ChatMapper;
-import com.khebra.whatsappclone.mappers.ChatResponse;
+import com.khebra.whatsappclone.response.ChatResponse;
 import com.khebra.whatsappclone.models.Chat;
 import com.khebra.whatsappclone.models.User;
 import com.khebra.whatsappclone.repositories.ChatRepository;
 import com.khebra.whatsappclone.repositories.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

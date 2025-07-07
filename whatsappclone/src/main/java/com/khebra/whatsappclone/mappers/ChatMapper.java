@@ -1,6 +1,7 @@
 package com.khebra.whatsappclone.mappers;
 
 import com.khebra.whatsappclone.models.Chat;
+import com.khebra.whatsappclone.response.ChatResponse;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -1,7 +1,7 @@
 package com.khebra.whatsappclone.controllers;
 
 
-import com.khebra.whatsappclone.mappers.ChatResponse;
+import com.khebra.whatsappclone.response.ChatResponse;
 import com.khebra.whatsappclone.services.ChatService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
