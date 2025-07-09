@@ -15,24 +15,41 @@ import org.springframework.web.filter.CorsFilter;
 import java.util.Arrays;
 import java.util.Collections;
 
-@Configuration
-@EnableWebSecurity
-public class SecurityConfig {
+    @Configuration
+    @EnableWebSecurity
+    public class SecurityConfig {
 
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.cors(Customizer.withDefaults())
-                .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(req->
-                        req.requestMatchers("/v3/api-docs","/v3/api-docs/**","/swagger-resources","/swagger-resources/**","/configuration/ui","/configuration/security","/swagger-ui/**","/webjars/**","/ws/**")
-                                .permitAll()
-                                .anyRequest()
-                                .authenticated())
-                .oauth2ResourceServer(auth ->
-                        auth.jwt(token ->
-                                token.jwtAuthenticationConverter(new KeycloakJwtAuthConverter())));
-    return http.build();
-    }
+        @Bean
+        public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+            http
+                    .cors(Customizer.withDefaults())
+                    .csrf(AbstractHttpConfigurer::disable)
+                    .authorizeHttpRequests(req ->
+                            req
+                                    .requestMatchers(
+                                            "/auth/**",
+                                            "/v2/api-docs",
+                                            "/v3/api-docs",
+                                            "/v3/api-docs/**",
+                                            "/swagger-resources",
+                                            "/swagger-resources/**",
+                                            "/configuration/ui",
+                                            "/configuration/security",
+                                            "/swagger-ui/**",
+                                            "/swagger-ui.html",
+                                            "/webjars/**",
+                                            "/ws/**"
+                                    )
+                                    .permitAll()
+                                    .anyRequest()
+                                    .authenticated()
+                    )
+                    .oauth2ResourceServer(auth ->
+                            auth.jwt(jwt -> jwt.jwtAuthenticationConverter(new KeycloakJwtAuthConverter()))
+                    );
+
+            return http.build();
+        }
 
     @Bean
     public CorsFilter corsFilter(){

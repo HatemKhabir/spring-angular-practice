@@ -1,6 +1,7 @@
 package com.khebra.whatsappclone.mappers;
 
 import com.khebra.whatsappclone.models.User;
+import com.khebra.whatsappclone.response.UserResponse;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -27,5 +28,16 @@ public class UserMapper {
         }
         user.setLastSeen(LocalDateTime.now());
         return user;
+    }
+
+    public UserResponse toUserResponse(User user) {
+        return UserResponse.builder()
+                .id(user.getId())
+                .isOnline(user.isUserOnline())
+                .email(user.getEmail())
+                .firstName(user.getFirstName())
+                .lastName(user.getLastName())
+                .lastSeen(user.getLastSeen())
+                .build();
     }
 }

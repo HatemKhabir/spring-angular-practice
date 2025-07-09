@@ -19,13 +19,16 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://127.0.0.1:8080/realms/master
+          issuer-uri: http://localhost:9090/realms/whatsapp-clone
   servlet:
     multipart:
       max-file-size: 50MB
 
+springdoc:
+  default-produces-media-type: application/json
+
 application:
   file:
     uploads:
-      media-output.path: /uploads
+      media-output-path: /uploads
 
