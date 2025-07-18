@@ -14,7 +14,7 @@ export class KeycloakService {
       this._keycloak = new Keycloak({
         url: 'http://localhost:9090',
         realm: 'whatsapp-clone',
-        clientId: 'whatsapp-clone-ui',
+        clientId: 'whatsapp-clone-app',
       });
     }
     return this._keycloak;
@@ -23,6 +23,7 @@ export class KeycloakService {
   async init() {
     const authenticated = await this.keycloak.init({
       onLoad: 'login-required',
+      checkLoginIframe: false,
     });
   }
   async login() {
