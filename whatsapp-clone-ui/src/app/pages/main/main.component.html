@@ -1,0 +1,22 @@
+<div class="main">
+  <div class="background-green"></div>
+  <div class="main-container">
+    <div class="chat-container">
+      <div>
+        <i class="fa-solid fa-message cursor-pointer"></i>
+      </div>
+      <div class="user-sidebar">
+        <i class="fa-solid fa-user cursor-pointer"></i>
+        <i class="fa-solid fa-door-open cursor-pointer"></i>
+      </div>
+    </div>
+    <div class="chat-list">
+        <div class="chat-item">
+            <app-chat-list
+            [chats]="chats"
+            ></app-chat-list>
+        </div>
+    
+       </div>
+  </div>
+</div>
