@@ -1,0 +1,27 @@
+.main-chat-list{
+    position: sticky;
+    top: 0;
+    background-color: #f0f0f0;
+}
+
+.chat-list-header{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.chats-list{
+    >div{
+        cursor: pointer;
+        &:hover{
+            background-color: #a18a8a;
+        }
+    }
+}
+
+.border-bottom-grey{
+    border-bottom: 1px solid #ccc;
+}

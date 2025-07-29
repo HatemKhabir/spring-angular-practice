@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ChatListComponent } from "../../components/chat-list/chat-list.component";
 import { ModelChatResponseModel } from '../../api/models';
 import { ApiChatService } from '../../api/services';
+import { KeycloakService } from '../../utils/keycloak/keycloak.service';
 
 @Component({
   selector: 'app-main',
@@ -11,10 +12,12 @@ import { ApiChatService } from '../../api/services';
 })
 export class MainComponent implements OnInit {
 
+
 chats:Array<ModelChatResponseModel> = [];
 
   constructor(
-    private chatService:ApiChatService
+    private chatService:ApiChatService,
+    private keyCloakService:KeycloakService
   ) { }
 
   ngOnInit(): void {
@@ -31,4 +34,11 @@ this.getAllChats();
       }
     })
   }
+
+  logout() {
+    this.keyCloakService.logout();
+    }
+    userProfile() {
+    this.keyCloakService.accountManagement();
+    }
 }
