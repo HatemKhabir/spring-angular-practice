@@ -92,11 +92,11 @@
       }
         <input type="text" class="form-control-sm w-100" placeholder="Type a message..." 
         [(ngModel)]="messageContent"
-        (keyup.enter)="sendMessage(messageContent)"
+        (keyup.enter)="sendMessage()"
         (click)="onClick()"
         />
         @if(messageContent) {
-          <i class="fa-solid fa-paper-plane cursor-pointer" (click)="sendMessage(messageContent)"></i>
+          <i class="fa-solid fa-paper-plane cursor-pointer" (click)="sendMessage()"></i>
         } @else {
           <i class="fa-solid fa-microphone cursor-pointer"></i>
         }
