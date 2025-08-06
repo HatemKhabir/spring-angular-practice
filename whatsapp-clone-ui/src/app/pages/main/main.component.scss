@@ -43,7 +43,7 @@
 
 .chat-list{
     display: flex;
-    flex-direction: column;
+    overflow: hidden;
     width: 100%;
 }
 
@@ -54,4 +54,60 @@
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+}
+
+.bg-chat {
+    background-color: #efeae22c; /* Light grey background for chat area */
+}
+
+.message-box{
+    position: relative;
+    display: flex;
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 8px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5), 0 2px 5px rgba(0, 0, 0, 0.5);
+    &.self {
+        > div{
+            position: relative;
+            right: 0;
+            text-align: right;
+            background-color: #dcf8c6; /* Light green background for self messages */
+            color: #000; /* Dark text for self messages */
+            padding: 10px 10px 0 10px;
+            max-width: 60%;
+            border-radius: 8px;
+        }
+        justify-content: flex-end; /* Align self messages to the right */
+    }
+    &.friend{
+        > div{
+            position: relative;
+            left: 0;
+            text-align: left;
+            background-color: #ffffff; /* White background for friend messages */
+            color: #000; /* Dark text for friend messages */
+            padding: 10px 10px 0 10px;
+            max-width: 60%;
+            border-radius: 8px;
+        }
+        justify-content: flex-start; /* Align friend messages to the left */
+    }
+}
+
+i{
+    &.seen{
+        color: #1ea884; /* Green color for seen icon */
+    }
+    &.ml-neg{
+        margin-left: -5px;
+    }
+}
+
+.emoji-picker {
+    position: absolute;
+    bottom: 60px; /* Adjust based on your layout */
+    left: 350px; /* Adjust based on your layout */
+    z-index: 1000; /* Ensure it appears above other elements */
 }

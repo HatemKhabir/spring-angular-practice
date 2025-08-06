@@ -1,4 +1,4 @@
-import { Component, input, InputSignal } from '@angular/core';
+import { Component, input, InputSignal, output } from '@angular/core';
 import { ModelChatResponseModel, ModelUserResponseModel } from '../../api/models';
 import { DatePipe } from '@angular/common';
 import { ApiUse4RService } from '../../api/services';
@@ -10,18 +10,14 @@ import { ApiUse4RService } from '../../api/services';
   styleUrl: './chat-list.component.scss',
 })
 export class ChatListComponent {
-contactClicked(_t33: ModelUserResponseModel) {
-throw new Error('Method not implemented.');
-}
-addContact(_t33: ModelUserResponseModel) {
-throw new Error('Method not implemented.');
-}
+
   chats: InputSignal<ModelChatResponseModel[]> = input<
     ModelChatResponseModel[]
   >([]);
   searchNewContact = false;
   contacts:Array<ModelUserResponseModel> = [];
-  
+  chatSelected=output<ModelChatResponseModel>();
+
   constructor(
     private userService: ApiUse4RService,
   ) {
@@ -45,9 +41,14 @@ throw new Error('Method not implemented.');
     }
     return lastMessage?.substring(0, 20) + '...';
   }
-
-  chatClicked(_t16: ModelChatResponseModel) {
+  contactClicked(_t33: ModelUserResponseModel) {
     throw new Error('Method not implemented.');
+    }
+    addContact(_t33: ModelUserResponseModel) {
+    throw new Error('Method not implemented.');
+    }
+  chatClicked(chat: ModelChatResponseModel) {
+  this.chatSelected.emit(chat);
   }
   searchContact() {
     throw new Error('Method not implemented.');
